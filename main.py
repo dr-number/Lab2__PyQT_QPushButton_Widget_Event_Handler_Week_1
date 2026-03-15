@@ -144,7 +144,7 @@ class AboutMe(QWidget):
             text_layout=self.text_layout2
         )
         self.__add_info(
-            title="Коммерческий опыт работы:",
+            title="Коммерческий опыт работы с технологиями:",
             text=(
                 "<b>Python:</b> Django, Celery, Redis<br>"
                 "<b>C Legacy-кодом</b><br>"
@@ -175,9 +175,32 @@ class AboutMe(QWidget):
         self.button_more_info.setToolTip("Нажмите для возврата к исходной информации")
         self.button_more_info.clicked.connect(self.show_more_info)
         self.__add_info(
-            title="((((Достижения))))",
+            title="Опыт работы",
             text=(
-                "хххъъъъъъ"
+                "<b>ООО \"NoName\"</b></br>"
+                "Web-разработчик; Android-разработчик<br>"
+                "<b>Период работы:</b> Июнь 2018 — Февраль 2020<br>"
+                "<b>Задачи:</b>"
+                "<ul>"
+                "<li>Разработка мобильного приложения и сервера связанного с ним.</li>"
+                "<li>Создание сайтов, работа с CMS (дополнительно).</li>"
+                "</ul>"
+            ),
+            text_layout=self.text_layout2
+        )
+        self.__add_info(
+            title="Курсы повышения квалификации",
+            text=(
+                "<b>1C Предприятие. Управление торговлей</b><br>"
+                "<b>Место проведения:</b> ГБПОУ НСО \"Новосибирский профессионально - педагогический колледж\"<br>"
+                "<b>Год:</b> 2021"
+            ),
+            text_layout=self.text_layout2
+        )
+        self.__add_info(
+            title="Мои проекты",
+            text=(
+                "<a href=\"https://github.com/dr-number/Rishat_django_test.git\">Работа с API платежной системы Stripe (Python Django)</a><br><br>"
             ),
             text_layout=self.text_layout2
         )
