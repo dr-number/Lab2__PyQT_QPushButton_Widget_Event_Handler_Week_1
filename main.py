@@ -22,6 +22,7 @@ class AboutMe(QWidget):
         '''Настройка графического интерфейса приложения.'''
         self.setGeometry(200, 50, 500, 400)
         self.setMaximumWidth(500)
+        self.setMaximumHeight(400)
         self.setWindowTitle("Об авторе")
         self.setUpMainWindow()
         self.show()
@@ -101,13 +102,13 @@ class AboutMe(QWidget):
         self.__add_info(
             title="Коммерческий опыт работы:",
             text=(
-                "<b>Python:</b> Django, Celery, Redis<br><br>"
-                "<b>C Legacy-кодом</b><br><br>"
-                "<b>Docker; Docker Compose</b><br><br>"
-                "<b>БД:</b> PostgreSQL, MySQL, SQLite<br><br>"
-                "<b>Автоматизацией задач:</b> Bash-скрипты<br><br>"
-                "<b>Java, Kotlin</b><br><br>"
-                "<b>Js</b><br><br>"
+                "<b>Python:</b> Django, Celery, Redis<br>"
+                "<b>C Legacy-кодом</b><br>"
+                "<b>Docker; Docker Compose</b><br>"
+                "<b>БД:</b> PostgreSQL, MySQL, SQLite<br>"
+                "<b>Автоматизацией задач:</b> Bash-скрипты<br>"
+                "<b>Java, Kotlin</b><br>"
+                "<b>Js</b><br>"
             ),
             text_layout=text_layout
         )
@@ -116,6 +117,10 @@ class AboutMe(QWidget):
             text=(
                 "<b>Оптимизировал</b> скорость генерации документов примерно в 10 раз (с ~30 сек. до ~3 сек.)<br>"
                 "<b>Осужествил</b> интеграцию backend с брокерскими системами \"Tradernet by freedom finance\", \"T‑Bank Invest API\", \"Finam Trade API\"<br>"
+                "<b>Осужествил</b> интеграцию backend с платежной системой \"Robokassa\"<br>"
+                "<b>Разработал</b> систему подписания документов<br>"
+                "<b>Разработал</b> мини-систему защиты от DDoS-атак<br>"
+                "<b>Осуществил</b> интеграцию с системой расслки смс \"GreenSMS\"<br>"
             ),
             text_layout=text_layout
         )
