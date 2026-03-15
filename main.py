@@ -1,14 +1,11 @@
 import sys
 import os
-import json
-import re
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout
 )
 from PyQt6.QtGui import QPixmap
 from PyQt6.QtCore import Qt
 from traceback import format_exc
-from PyQt6.QtWidgets import QMessageBox
 from PyQt6.QtGui import QPixmap, QFont
 
 class AboutMe(QWidget):
