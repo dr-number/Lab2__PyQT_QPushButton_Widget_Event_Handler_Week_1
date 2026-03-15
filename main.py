@@ -84,20 +84,64 @@ class AboutMe(QWidget):
         text_layout.setSpacing(10)
         text_layout.setContentsMargins(30, 20, 30, 20)
 
-        self.text_label0 = QLabel("Свою фотографию не покажу. Смотрите на смайлик. Он красивый)")
-        self.text_label0.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.text_label0.setFont(QFont("Arial", 10))
-        text_layout.addWidget(self.text_label0)
+        text_label0 = QLabel("Свою фотографию не покажу. Смотрите на смайлик. Он красивый)")
+        text_label0.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        text_label0.setFont(QFont("Arial", 10))
+        text_layout.addWidget(text_label0)
         
-        self.text_label1 = QLabel("Ларионов Никита")
-        self.text_label1.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.text_label1.setFont(QFont("Arial", 24, QFont.Weight.Bold))
-        text_layout.addWidget(self.text_label1)
+        text_label1 = QLabel("Ларионов Никита")
+        text_label1.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        text_label1.setFont(QFont("Arial", 24, QFont.Weight.Bold))
+        text_layout.addWidget(text_label1)
 
+        text_widget2 = QWidget()
+        self.text_layout2 = QVBoxLayout(text_widget2)
+
+        button_layout = QHBoxLayout()
+
+        button_ok = QPushButton("ОК", self)
+        button_ok.setFixedSize(100, 30)
+        button_ok.setToolTip("Нажмите для завершения просмотра")
+        button_ok.clicked.connect(self.close_application)
+
+        self.button_more_info = QPushButton("", self)
+        self.button_more_info.setFixedSize(100, 30)
+        self.show_more_info()
+
+        button_layout.addWidget(button_ok)
+        button_layout.addWidget(self.button_more_info)
+        button_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
+    
+        main_layout.addLayout(button_layout)
+        main_layout.addWidget(text_widget)
+        main_layout.addWidget(text_widget2)
+        self.setLayout(main_layout)
+        
+        # Загружаем изображения
+        self.showImage(image_label=self.image_background, name_file="bg.jpg", width=500, height=400, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatioByExpanding)
+        self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatio)
+
+    def close_application(self):
+        print("Закрываем приложение...")
+        QApplication.quit()
+
+    def __clear_layout(self, layout):
+        '''Очистка layout от всех виджетов'''
+        while layout.count():
+            item = layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+
+    def show_more_info(self):
+        self.__clear_layout(self.text_layout2)
+        self.button_more_info.setText("Подробнее")
+        self.button_more_info.setToolTip("Нажмите для просмотра более подробной информации")
+        self.button_more_info.clicked.connect(self.show_main_info)
         self.__add_info(
             title="Биография",
             text="Web разработчик (backend, django)",
-            text_layout=text_layout
+            text_layout=self.text_layout2
         )
         self.__add_info(
             title="Коммерческий опыт работы:",
@@ -110,7 +154,7 @@ class AboutMe(QWidget):
                 "<b>Java, Kotlin</b><br>"
                 "<b>Js</b><br>"
             ),
-            text_layout=text_layout
+            text_layout=self.text_layout2
         )
         self.__add_info(
             title="Достижения",
@@ -122,35 +166,24 @@ class AboutMe(QWidget):
                 "<b>Разработал</b> мини-систему защиты от DDoS-атак<br>"
                 "<b>Осуществил</b> интеграцию с системой расслки смс \"GreenSMS\"<br>"
             ),
-            text_layout=text_layout
+            text_layout=self.text_layout2
         )
 
-        button_layout = QHBoxLayout()
+    def show_main_info(self):
+        self.__clear_layout(self.text_layout2)
+        self.button_more_info.setText("Назад")
+        self.button_more_info.setToolTip("Нажмите для возврата к исходной информации")
+        self.button_more_info.clicked.connect(self.show_more_info)
+        self.__add_info(
+            title="((((Достижения))))",
+            text=(
+                "хххъъъъъъ"
+            ),
+            text_layout=self.text_layout2
+        )
 
-        button_ok = QPushButton("ОК", self)
-        button_ok.setFixedSize(100, 30)
-        button_ok.setToolTip("Нажмите для завершения просмотра")
-        button_ok.clicked.connect(self.close_application)
 
-        button_more_info = QPushButton("Подробнее", self)
-        button_more_info.setFixedSize(100, 30)
-        button_more_info.setToolTip("Нажмите для просмотра более подробной информации")
 
-        button_layout.addWidget(button_ok)
-        button_layout.addWidget(button_more_info)
-        button_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-    
-        main_layout.addLayout(button_layout)
-        main_layout.addWidget(text_widget)
-        self.setLayout(main_layout)
-        
-        # Загружаем изображения
-        self.showImage(image_label=self.image_background, name_file="bg.jpg", width=500, height=400, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatioByExpanding)
-        self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatio)
-
-    def close_application(self):
-        print("Закрываем приложение...")
-        QApplication.quit()
 
 
     def showImage(self, image_label: QLabel, name_file: str, width: int, height: int, aspect_ratio_mode):
