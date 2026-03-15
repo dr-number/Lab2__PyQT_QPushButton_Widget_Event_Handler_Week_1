@@ -78,13 +78,11 @@ class AboutMe(QWidget):
         text_layout.setSpacing(10)
         text_layout.setContentsMargins(30, 20, 30, 20)
 
-        # Текстовое поле 0
         self.text_label0 = QLabel("Свою фотографию не покажу. Смотрите на смайлик. Он красивый)")
         self.text_label0.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.text_label0.setFont(QFont("Arial", 10))
         text_layout.addWidget(self.text_label0)
         
-        # Текстовое поле 1
         self.text_label1 = QLabel("Ларионов Никита")
         self.text_label1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.text_label1.setFont(QFont("Arial", 24, QFont.Weight.Bold))
@@ -93,6 +91,20 @@ class AboutMe(QWidget):
         self.__add_info(
             title="Биография",
             text="Web разработчик (backend, django)",
+            text_layout=text_layout
+        )
+
+        self.__add_info(
+            title="Коммерческий опыт работы:",
+            text=(
+                "<b>Python:</b> Django, Celery, Redis<br><br>"
+                "<b>C Legacy-кодом</b><br><br>"
+                "<b>Docker; Docker Compose</b><br><br>"
+                "<b>БД:</b> PostgreSQL, MySQL, SQLite<br><br>"
+                "<b>Автоматизацией задач:</b> Bash-скрипты<br><br>"
+                "<b>Java, Kotlin</b><br><br>"
+                "<b>Js</b><br><br>"
+            ),
             text_layout=text_layout
         )
         
