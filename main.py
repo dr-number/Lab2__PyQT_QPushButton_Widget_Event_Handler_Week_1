@@ -20,7 +20,8 @@ class AboutMe(QWidget):
         
     def initializeUI(self):
         '''Настройка графического интерфейса приложения.'''
-        self.setGeometry(200, 100, 500, 400)
+        self.setGeometry(200, 50, 500, 400)
+        self.setMaximumWidth(500)
         self.setWindowTitle("Об авторе")
         self.setUpMainWindow()
         self.show()
@@ -28,10 +29,14 @@ class AboutMe(QWidget):
     def __add_info(self, title: str, text: str, text_layout):
         text_label_title = QLabel(title)
         text_label_title.setFont(QFont("Arial", 14, QFont.Weight.Bold))
+        text_label_title.setMaximumWidth(430)
+        text_label_title.setWordWrap(True)
         text_layout.addWidget(text_label_title)
         
         text_label_text = QLabel(text)
         text_label_text.setFont(QFont("Arial", 10))
+        text_label_text.setMaximumWidth(430)
+        text_label_text.setWordWrap(True)
         text_layout.addWidget(text_label_text)
     
     def setUpMainWindow(self):
@@ -93,7 +98,6 @@ class AboutMe(QWidget):
             text="Web разработчик (backend, django)",
             text_layout=text_layout
         )
-
         self.__add_info(
             title="Коммерческий опыт работы:",
             text=(
@@ -104,6 +108,14 @@ class AboutMe(QWidget):
                 "<b>Автоматизацией задач:</b> Bash-скрипты<br><br>"
                 "<b>Java, Kotlin</b><br><br>"
                 "<b>Js</b><br><br>"
+            ),
+            text_layout=text_layout
+        )
+        self.__add_info(
+            title="Достижения",
+            text=(
+                "<b>Оптимизировал</b> скорость генерации документов примерно в 10 раз (с ~30 сек. до ~3 сек.)<br>"
+                "<b>Осужествил</b> интеграцию backend с брокерскими системами \"Tradernet by freedom finance\", \"T‑Bank Invest API\", \"Finam Trade API\"<br>"
             ),
             text_layout=text_layout
         )
