@@ -124,9 +124,22 @@ class AboutMe(QWidget):
             ),
             text_layout=text_layout
         )
-        
+
+        button_layout = QHBoxLayout()
+
+        button_ok = QPushButton("ОК", self)
+        button_ok.setFixedSize(100, 30)
+        button_ok.setToolTip("Нажмите для завершения просмотра")
+        button_ok.clicked.connect(self.close_application)
+
+        button_more_info = QPushButton("Подробнее", self)
+        button_more_info.setFixedSize(100, 30)
+
+        button_layout.addWidget(button_ok)
+        button_layout.addWidget(button_more_info)
+        button_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
     
-        
+        main_layout.addLayout(button_layout)
         main_layout.addWidget(text_widget)
         self.setLayout(main_layout)
         
@@ -134,7 +147,9 @@ class AboutMe(QWidget):
         self.showImage(image_label=self.image_background, name_file="bg.jpg", width=500, height=400, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatioByExpanding)
         self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatio)
 
-
+    def close_application(self):
+        print("Закрываем приложение...")
+        QApplication.quit()
 
 
     def showImage(self, image_label: QLabel, name_file: str, width: int, height: int, aspect_ratio_mode):
