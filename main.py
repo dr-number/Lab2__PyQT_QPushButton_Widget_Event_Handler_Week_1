@@ -29,17 +29,22 @@ class ImageSlider(QWidget):
         '''Создание элементов управления в главном окне'''
         main_layout = QVBoxLayout()
 
-        self.image_label = QLabel(self)
-        self.image_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.image_label.setMinimumSize(400, 350)
+        self.image_background = QLabel(self)
+        self.image_background.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.image_background.setMinimumSize(400, 350)
+
+        self.image_face = QLabel(self)
+        self.image_face.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self.image_face.setMinimumSize(400, 350)
         
         # Добавление виджетов в основной layout
-        main_layout.addWidget(self.image_label)
-        
+        main_layout.addWidget(self.image_background)
+        main_layout.addWidget(self.image_face)
         
         # Установка layout для окна
         self.setLayout(main_layout)
-        self.showImage(image_label=self.image_label, name_file="smile.png", width=300, height=300)
+        self.showImage(image_label=self.image_background, name_file="bg.jpg", width=400, height=350)
+        self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300)
     
     def showImage(self, image_label: QLabel, name_file: str, width: int, height: int):
         '''Отображение изображения'''
