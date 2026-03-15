@@ -27,8 +27,9 @@ class AboutMe(QWidget):
     
     def setUpMainWindow(self):
         '''Создание элементов управления в главном окне'''
+        # Убираем возможные отступы у главного окна
+        self.setContentsMargins(0, 0, 0, 0)
     
-
         self.image_background = QLabel(self)
         self.image_background.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.image_background.setGeometry(0, 0, 500, 400)  # Устанавливаем размер как у окна
@@ -38,11 +39,11 @@ class AboutMe(QWidget):
         self.image_face.setGeometry(100, 50, 300, 300)  # Позиционируем смайлик
 
        
-        self.showImage(image_label=self.image_background, name_file="bg.jpg", width=500, height=400)
-        self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300)
+        self.showImage(image_label=self.image_background, name_file="bg.jpg", width=500, height=400, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatioByExpanding)
+        self.showImage(image_label=self.image_face, name_file="smile.png", width=300, height=300, aspect_ratio_mode=Qt.AspectRatioMode.KeepAspectRatio)
 
 
-    def showImage(self, image_label: QLabel, name_file: str, width: int, height: int):
+    def showImage(self, image_label: QLabel, name_file: str, width: int, height: int, aspect_ratio_mode):
         '''Отображение изображения'''
         try:
             pixmap = QPixmap(os.path.join("images", name_file))
@@ -51,7 +52,7 @@ class AboutMe(QWidget):
                 image_label.setPixmap(pixmap.scaled(
                     width, 
                     height,
-                    Qt.AspectRatioMode.KeepAspectRatio,
+                    aspect_ratio_mode,
                     Qt.TransformationMode.SmoothTransformation
                 ))
 
