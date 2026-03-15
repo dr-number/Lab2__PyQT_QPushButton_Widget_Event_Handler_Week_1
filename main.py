@@ -134,6 +134,7 @@ class AboutMe(QWidget):
 
         button_more_info = QPushButton("Подробнее", self)
         button_more_info.setFixedSize(100, 30)
+        button_more_info.setToolTip("Нажмите для просмотра более подробной информации")
 
         button_layout.addWidget(button_ok)
         button_layout.addWidget(button_more_info)
