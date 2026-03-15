@@ -24,6 +24,15 @@ class AboutMe(QWidget):
         self.setWindowTitle("Об авторе")
         self.setUpMainWindow()
         self.show()
+
+    def __add_info(self, title: str, text: str, text_layout):
+        text_label_title = QLabel(title)
+        text_label_title.setFont(QFont("Arial", 14, QFont.Weight.Bold))
+        text_layout.addWidget(text_label_title)
+        
+        text_label_text = QLabel(text)
+        text_label_text.setFont(QFont("Arial", 10))
+        text_layout.addWidget(text_label_text)
     
     def setUpMainWindow(self):
         '''Создание элементов управления в главном окне'''
@@ -80,21 +89,16 @@ class AboutMe(QWidget):
         self.text_label1.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.text_label1.setFont(QFont("Arial", 24, QFont.Weight.Bold))
         text_layout.addWidget(self.text_label1)
+
+        self.__add_info(
+            title="Биография",
+            text="Web разработчик (backend, django)",
+            text_layout=text_layout
+        )
         
-        # Текстовое поле 2
-        self.text_label2 = QLabel("Биография")
-        self.text_label2.setFont(QFont("Arial", 14, QFont.Weight.Bold))
-        text_layout.addWidget(self.text_label2)
-        
-        # Текстовое поле 3
-        self.text_label3 = QLabel("Город: Москва")
-        self.text_label3.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        self.text_label3.setFont(QFont("Arial", 12, QFont.Weight.Bold))
-        self.text_label3.setStyleSheet("color: red;")
-        text_layout.addWidget(self.text_label3)
+    
         
         main_layout.addWidget(text_widget)
-        
         self.setLayout(main_layout)
         
         # Загружаем изображения
