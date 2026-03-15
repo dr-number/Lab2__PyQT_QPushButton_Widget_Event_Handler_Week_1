@@ -27,7 +27,7 @@ class AboutMe(QWidget):
         self.setUpMainWindow()
         self.show()
 
-    def __add_info(self, title: str, text: str, text_layout):
+    def __add_info(self, title: str, text: str, text_layout, is_link: bool = False):
         text_label_title = QLabel(title)
         text_label_title.setFont(QFont("Arial", 14, QFont.Weight.Bold))
         text_label_title.setMaximumWidth(430)
@@ -38,6 +38,8 @@ class AboutMe(QWidget):
         text_label_text.setFont(QFont("Arial", 10))
         text_label_text.setMaximumWidth(430)
         text_label_text.setWordWrap(True)
+        if is_link:
+            text_label_text.linkActivated.connect(self.open_link)
         text_layout.addWidget(text_label_text)
     
     def setUpMainWindow(self):
@@ -201,9 +203,18 @@ class AboutMe(QWidget):
             title="Мои проекты",
             text=(
                 "<a href=\"https://github.com/dr-number/Rishat_django_test.git\">Работа с API платежной системы Stripe (Python Django)</a><br><br>"
+                "<a href=\"https://github.com/dr-number/MyWeather_telegram_bot\">Погодный telegram bot (Python)</a><br><br>"
+                "<a href=\"https://github.com/dr-number/Base_flask_rest_API.git\">REST API (Python Flask)</a><br><br>"
+                "<a href=\"https://gitlab.com/dr.number/python_docker_django_test.git\">Тестирование websocket (Python Django)</a><br><br>"
             ),
+            is_link=True,
             text_layout=self.text_layout2
         )
+
+    def open_link(self, link):
+        '''Обработчик открытия ссылок'''
+        import webbrowser
+        webbrowser.open(link)
 
     def showImage(self, image_label: QLabel, name_file: str, width: int, height: int, aspect_ratio_mode):
         '''Отображение изображения'''
