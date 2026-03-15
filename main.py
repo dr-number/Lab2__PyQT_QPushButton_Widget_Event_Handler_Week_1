@@ -182,10 +182,6 @@ class AboutMe(QWidget):
             text_layout=self.text_layout2
         )
 
-
-
-
-
     def showImage(self, image_label: QLabel, name_file: str, width: int, height: int, aspect_ratio_mode):
         '''Отображение изображения'''
         try:
