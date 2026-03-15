@@ -20,9 +20,9 @@ class AboutMe(QWidget):
         
     def initializeUI(self):
         '''Настройка графического интерфейса приложения.'''
-        self.setGeometry(200, 50, 500, 400)
+        self.setGeometry(200, 50, 500, 1000)
         self.setMaximumWidth(500)
-        self.setMaximumHeight(400)
+        self.setMaximumHeight(1000)
         self.setWindowTitle("Об авторе")
         self.setUpMainWindow()
         self.show()
@@ -114,9 +114,9 @@ class AboutMe(QWidget):
         button_layout.addWidget(self.button_more_info)
         button_layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
     
-        main_layout.addLayout(button_layout)
         main_layout.addWidget(text_widget)
         main_layout.addWidget(text_widget2)
+        main_layout.addLayout(button_layout)
         self.setLayout(main_layout)
         
         # Загружаем изображения
